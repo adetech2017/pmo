@@ -1,0 +1,203 @@
+/**
+ * PMO Portal Theme - Responsive Utilities
+ * Handles mobile-specific adjustments
+ */
+
+/* ============================================================================
+   TABLET & MOBILE - 768px and below
+   ============================================================================ */
+@media (max-width: 768px) {
+  .page-header {
+    padding: var(--space-8) var(--container-padding-mobile) !important;
+  }
+
+  .page-header h1 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .page-header p {
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding-left: var(--container-padding-mobile);
+    padding-right: var(--container-padding-mobile);
+  }
+
+  /* Hero gradients - smaller on mobile */
+  .page-header > div:first-child {
+    width: 400px !important;
+    height: 400px !important;
+    top: -30% !important;
+    right: -5% !important;
+  }
+
+  /* Card grids */
+  [class*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Card padding */
+  .card {
+    padding: var(--space-4) !important;
+  }
+
+  /* Flex layouts */
+  [style*="display: flex"] {
+    flex-direction: column !important;
+  }
+
+  /* Section padding */
+  [style*="padding: var(--space-16)"] {
+    padding: var(--space-8) var(--container-padding-mobile) !important;
+  }
+
+  [style*="padding-top: var(--space-16)"] {
+    padding-top: var(--space-8) !important;
+    padding-bottom: var(--space-8) !important;
+  }
+
+  /* Font sizes */
+  [style*="font-size: var(--font-size-h1)"] {
+    font-size: 1.75rem !important;
+  }
+
+  [style*="font-size: var(--font-size-h2)"] {
+    font-size: 1.375rem !important;
+  }
+
+  [style*="font-size: var(--font-size-h3)"] {
+    font-size: 1.125rem !important;
+  }
+
+  [style*="font-size: var(--font-size-h4)"] {
+    font-size: 1rem !important;
+  }
+
+  /* Grid layouts */
+  [style*="grid-template-columns: repeat"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Spacing adjustments */
+  [style*="gap: var(--space-6)"] {
+    gap: var(--space-4) !important;
+  }
+
+  [style*="margin-bottom: var(--space-16)"] {
+    margin-bottom: var(--space-8) !important;
+  }
+
+  /* Button sizing */
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-sm {
+    width: auto;
+  }
+}
+
+/* ============================================================================
+   MOBILE PHONES - 480px and below
+   ============================================================================ */
+@media (max-width: 480px) {
+  .page-header {
+    padding: var(--space-6) var(--container-padding-mobile) !important;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header p {
+    font-size: 0.9375rem;
+  }
+
+  /* Hide overflow gradients */
+  .page-header > div:first-child {
+    display: none !important;
+  }
+
+  /* Hero sections stacked */
+  .section {
+    padding: var(--space-6) var(--container-padding-mobile) !important;
+  }
+
+  /* Reduce card padding further */
+  .card {
+    padding: var(--space-3) !important;
+  }
+
+  /* Typography on small screens */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9375rem;
+  }
+
+  /* Remove excess spacing */
+  [style*="margin: var(--space-12)"] {
+    margin: var(--space-4) !important;
+  }
+
+  [style*="padding: var(--space-8)"] {
+    padding: var(--space-4) !important;
+  }
+
+  /* Make buttons full width on mobile */
+  .btn {
+    width: 100%;
+  }
+
+  /* Grid items single column */
+  .grid, [style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex stacking */
+  [style*="display: flex; gap"] {
+    flex-direction: column !important;
+    gap: var(--space-3) !important;
+  }
+
+  /* Footer adjustments */
+  footer, .site-footer {
+    padding: var(--space-6) var(--container-padding-mobile) !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Responsive Text
+   ============================================================================ */
+@media (max-width: 768px) {
+  /* Ensure touch targets are at least 44x44px */
+  .btn, a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Improve readability */
+  body {
+    line-height: 1.6;
+  }
+}
