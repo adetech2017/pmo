@@ -71,6 +71,15 @@ define( 'SCRIPT_DEBUG', true );
 define( 'PMO_THEME_NAME', 'pmo-portal-theme' );
 define( 'PMO_PLUGIN_NAME', 'pmo-core' );
 
+// Environment-specific URL Configuration
+if ( strpos( $_SERVER['HTTP_HOST'], 'rescuepharm.ng' ) !== false ) {
+    define( 'WP_HOME', 'http://rescuepharm.ng/pmo' );
+    define( 'WP_SITEURL', 'http://rescuepharm.ng/pmo' );
+} else {
+    define( 'WP_HOME', 'http://localhost:8080/pmo' );
+    define( 'WP_SITEURL', 'http://localhost:8080/pmo' );
+}
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
