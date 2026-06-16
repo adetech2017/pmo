@@ -143,6 +143,132 @@ Tags: government, premium, custom, responsive, accessible, wcag
   --container-max: 1400px;
   --container-padding-desktop: 3rem;
   --container-padding-mobile: 1.5rem;
+
+  /* Semantic Colors */
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-text-muted: var(--color-gray-400);
+  --color-text-inverse: var(--color-white);
+
+  --color-bg-primary: var(--color-white);
+  --color-bg-secondary: var(--color-gray-50);
+  --color-bg-tertiary: var(--color-gray-100);
+
+  --color-border-light: var(--color-gray-200);
+  --color-border-base: var(--color-gray-300);
+  --color-border-dark: var(--color-gray-400);
+
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 999;
+  --z-modal: 1000;
+  --z-tooltip: 1100;
+}
+
+/* ============================================================================
+   HERO SECTION ENHANCEMENTS - Animations & Parallax
+   ========================================================================== */
+
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  animation: fadeInScale 0.8s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.carousel-content h1 {
+  animation: slideInUp 0.8s ease-out 0.2s backwards;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.carousel-content p {
+  animation: slideInUp 0.8s ease-out 0.4s backwards;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+}
+
+.carousel-buttons {
+  animation: slideInUp 0.8s ease-out 0.6s backwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal animations */
+.section-header,
+.foundation-card,
+.impact-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.section-header.visible,
+.foundation-card.visible,
+.impact-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.foundation-card {
+  transition: all 0.3s ease;
+}
+
+.foundation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+.impact-card {
+  transition: all 0.3s ease;
+}
+
+.impact-card:hover {
+  transform: scale(1.05);
+}
+
+/* Number counter animation */
+.impact-number {
+  font-size: 3rem;
+  font-weight: 800;
+  animation: countUp 2s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* ============================================================================
@@ -178,42 +304,82 @@ body {
 
 h1, .h1 {
   font-size: var(--type-h1);
-  font-weight: var(--font-600);
+  font-weight: 800;
   line-height: var(--leading-tight);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   margin-bottom: var(--space-6);
   letter-spacing: -0.5px;
 }
 
 h2, .h2 {
   font-size: var(--type-h2);
-  font-weight: var(--font-600);
+  font-weight: 700;
   line-height: var(--leading-tight);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   margin-bottom: var(--space-5);
   letter-spacing: -0.3px;
 }
 
 h3, .h3 {
   font-size: var(--type-h3);
-  font-weight: var(--font-600);
+  font-weight: 700;
   line-height: var(--leading-normal);
-  color: var(--color-gray-900);
+  color: var(--color-text-primary);
   margin-bottom: var(--space-4);
+  letter-spacing: -0.2px;
 }
 
 h4, .h4 {
   font-size: var(--type-h4);
-  font-weight: var(--font-600);
-  color: var(--color-gray-900);
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin-bottom: var(--space-3);
+  letter-spacing: -0.1px;
+}
+
+h5, .h5 {
+  font-size: var(--type-body-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+h6, .h6 {
+  font-size: var(--type-body);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 p {
   margin-bottom: var(--space-4);
-  color: var(--color-gray-600);
+  color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
 }
+
+/* Enhanced typography utilities */
+.text-xs { font-size: var(--type-caption); }
+.text-sm { font-size: var(--type-label); }
+.text-base { font-size: var(--type-body); }
+.text-lg { font-size: var(--type-body-lg); }
+.text-xl { font-size: var(--type-h4); }
+.text-2xl { font-size: var(--type-h3); }
+.text-3xl { font-size: var(--type-h2); }
+.text-4xl { font-size: var(--type-h1); }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+.leading-tight { line-height: var(--leading-tight); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
+.leading-loose { line-height: var(--leading-loose); }
 
 a {
   color: var(--color-primary-700);
@@ -602,6 +768,31 @@ a:focus-visible {
 }
 
 /* ============================================================================
+   7.5 ENHANCED STICKY HEADER
+   ========================================================================== */
+
+/* Enhanced sticky header on scroll */
+.header-wrapper {
+  transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.header-wrapper.scrolled {
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2) 0;
+}
+
+/* Reduce header size on scroll for compact view */
+@media (min-width: 769px) {
+  .header-wrapper.scrolled {
+    padding: var(--space-2) 0 !important;
+  }
+
+  .header-wrapper.scrolled .site-branding span:not(:first-child) {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================================================
    8. FOOTER - GOVERNMENT AUTHORITY
    ========================================================================== */
 
@@ -805,6 +996,10 @@ textarea {
   border-width: 0;
 }
 
+/* ============================================================================
+   ACCESSIBILITY: Reduced Motion Support
+   ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -812,6 +1007,178 @@ textarea {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .header-wrapper {
+    transition: none !important;
+  }
+
+  .card,
+  .btn,
+  a {
+    transition: none !important;
+  }
+}
+
+/* ============================================================================
+   PERFORMANCE: Optimized Animations & Transforms
+   ========================================================================== */
+
+/* Use transform and opacity for performant animations */
+.foundation-card,
+.impact-card,
+.event-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize animation performance */
+.section-header,
+.foundation-card,
+.impact-card,
+.news-card,
+.featured-article {
+  will-change: opacity, transform;
+}
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+/* News Card Hover Effects */
+.news-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-xl);
+}
+
+.news-card:hover img {
+  transform: scale(1.08);
+}
+
+.news-card:hover a {
+  color: var(--color-primary-700);
+}
+
+/* Featured Article Hover */
+.featured-article:hover img {
+  transform: scale(1.05);
+}
+
+.btn-featured:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2xl);
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
+}
+
+/* Programme Card Hover Effects */
+.programme-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-xl);
+}
+
+.programme-card:hover img {
+  transform: scale(1.08);
+}
+
+.programme-card:hover a {
+  color: var(--color-accent);
+}
+
+/* Focus Area Card Hover Effects */
+.focus-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.focus-card:hover > div:first-child {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.focus-card:hover h3 {
+  color: var(--color-accent);
+}
+
+/* Gallery Card Hover Effects */
+.gallery-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-card:hover > div:last-child span {
+  color: var(--color-accent);
+}
+
+/* Gallery Item Hover Effects */
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.12);
+}
+
+.gallery-item:hover > div {
+  background: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+}
+
+/* Lightbox Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Event Card Hover Effects */
+.event-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-xl);
+}
+
+.event-card:hover h3 a {
+  color: var(--color-accent);
+}
+
+.event-card:hover a[href*="the_permalink"] {
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Reduce paint operations */
+img {
+  backface-visibility: hidden;
+}
+
+/* Native lazy loading for images */
+img[loading="lazy"] {
+  background-color: var(--color-gray-100);
+  animation: none;
 }
 
 /* ============================================================================
@@ -837,9 +1204,42 @@ textarea {
     --space-24: 3.5rem;
   }
 
+  .main-navigation {
+    position: absolute !important;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .main-navigation.active {
+    max-height: 500px;
+  }
+
   .nav-menu,
   .main-navigation ul {
     gap: var(--space-4);
+    flex-direction: column;
+    padding: var(--space-6);
+  }
+
+  .nav-menu a,
+  .main-navigation a {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .nav-menu a:hover,
+  .nav-menu a.active,
+  .main-navigation a:hover,
+  .main-navigation a.active {
+    border-left-color: var(--color-primary-700);
+    border-bottom-color: transparent;
   }
 
   .section {
@@ -950,14 +1350,75 @@ textarea {
 
 .bg-white { background-color: var(--color-white); }
 .bg-gray-50 { background-color: var(--color-gray-50); }
+.bg-gray-100 { background-color: var(--color-gray-100); }
 .bg-primary { background-color: var(--color-primary-700); }
+.bg-primary-light { background-color: var(--color-primary-50); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-danger { background-color: var(--color-danger); }
+.bg-info { background-color: var(--color-info); }
 
 .text-primary { color: var(--color-primary-700); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-muted { color: var(--color-text-muted); }
 .text-gray-600 { color: var(--color-gray-600); }
+.text-accent { color: var(--color-accent); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-danger { color: var(--color-danger); }
+.text-info { color: var(--color-info); }
 
-.border-bottom { border-bottom: 1px solid var(--color-gray-200); }
+.border-bottom { border-bottom: 1px solid var(--color-border-light); }
+.border-top { border-top: 1px solid var(--color-border-light); }
+.border-left { border-left: 1px solid var(--color-border-light); }
+.border-right { border-right: 1px solid var(--color-border-light); }
+.border-all { border: 1px solid var(--color-border-light); }
 
 .max-w-container { max-width: var(--container-max); }
+
+/* ============================================================================
+   PAGINATION STYLES
+   ========================================================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-border-light);
+}
+
+.page-numbers:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-700);
+}
+
+.page-numbers.current {
+  background-color: var(--color-primary-700);
+  color: var(--color-white);
+  border-color: var(--color-primary-700);
+}
+
+.page-numbers.dots {
+  border: none;
+  padding: var(--space-2);
+  cursor: default;
+}
 
 .flex-center {
   display: flex;
