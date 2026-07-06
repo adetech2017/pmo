@@ -122,7 +122,7 @@ get_header();
           foreach ( $doc_list as $doc ) {
             $doc = trim( $doc );
             if ( $doc ) {
-              echo '<p style="margin-bottom: var(--space-2);"><a href="' . esc_url( $doc ) . '" target="_blank" rel="noopener" style="color: var(--color-accent); text-decoration: none; font-weight: var(--font-weight-semibold);">📄 ' . esc_html( basename( parse_url( $doc, PHP_URL_PATH ) ) ) . '</a></p>';
+              echo '<p style="margin-bottom: var(--space-2);"><a href="' . esc_url( $doc ) . '" target="_blank" rel="noopener" style="color: var(--color-accent-dark); text-decoration: none; font-weight: var(--font-weight-semibold);"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> ' . esc_html( basename( parse_url( $doc, PHP_URL_PATH ) ) ) . '</a></p>';
             }
           }
           ?>

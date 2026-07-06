@@ -11,7 +11,7 @@ get_header();
 <main id="main-content" class="site-content">
 
   <!-- Hero Section -->
-  <section style="background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-600) 50%, var(--color-info) 100%); color: var(--color-white); padding: var(--space-16) var(--container-padding-desktop); position: relative; overflow: hidden;">
+  <section style="background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-600) 50%, var(--color-primary-400) 100%); color: var(--color-white); padding: var(--space-16) var(--container-padding-desktop); position: relative; overflow: hidden;">
     <!-- Decorative elements -->
     <div style="position: absolute; top: -50%; right: -10%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(201, 162, 39, 0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: float 6s ease-in-out infinite;"></div>
 
@@ -52,7 +52,7 @@ get_header();
         ?>
         <div style="margin-bottom: var(--space-12); animation: slideInUp 0.8s ease-out;">
           <h2 style="font-size: 1.8rem; margin-bottom: var(--space-3); color: var(--color-primary-700); font-weight: 800;">
-            📸 Photo Gallery
+            <i class="fa-solid fa-camera" aria-hidden="true"></i> Photo Gallery
           </h2>
           <p style="color: var(--color-gray-600); margin-bottom: var(--space-8); font-size: var(--font-size-small);">
             <?php echo count( $ids_array ); ?> Image<?php echo count( $ids_array ) !== 1 ? 's' : ''; ?> • Click any image to view full size
@@ -78,7 +78,7 @@ get_header();
                     loading="lazy"
                   >
                   <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0); display: flex; align-items: center; justify-content: center; opacity: 0; transition: all var(--transition-base);">
-                    <span style="color: var(--color-white); font-size: 2.5rem;">🔍</span>
+                    <span style="color: var(--color-white); font-size: 2.5rem;"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
                   </div>
                 </div>
                 <?php
@@ -92,7 +92,7 @@ get_header();
     } else {
       ?>
       <div style="text-align: center; padding: var(--space-16); background: var(--color-gray-50); border-radius: var(--radius-xl); animation: slideInUp 0.8s ease-out;">
-        <div style="font-size: 3rem; margin-bottom: var(--space-4); animation: float 3s ease-in-out infinite;">🖼️</div>
+        <div style="font-size: 3rem; margin-bottom: var(--space-4); animation: float 3s ease-in-out infinite;"><i class="fa-solid fa-images" aria-hidden="true"></i></div>
         <p style="color: var(--color-gray-600); font-size: var(--font-size-body-lg); font-weight: 400;">
           No images in this gallery yet.
         </p>

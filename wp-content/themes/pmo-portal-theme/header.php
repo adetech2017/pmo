@@ -12,14 +12,11 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="description" content="Lagos State Parastatals Monitoring Office - Government Digital Platform" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 	<!-- Performance: Preconnect to external resources -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-	<!-- Premium Theme Stylesheet -->
-	<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() . '/style.css' ); ?>?v=<?php echo time(); ?>" />
 	<?php wp_head(); ?>
 </head>
 
@@ -40,7 +37,7 @@
 					} else {
 						?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" style="font-size: var(--font-size-h4); font-weight: var(--font-weight-bold); color: var(--color-primary); text-decoration: none; display: flex; align-items: center; gap: var(--space-2);">
-							<span style="font-size: 1.8rem;">🏛️</span>
+							<span style="font-size: 1.8rem;"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span>
 							<span><?php bloginfo( 'name' ); ?></span>
 						</a>
 						<?php
@@ -57,17 +54,31 @@
 						'container'      => false,
 						'fallback_cb'    => 'wp_page_menu',
 						'depth'          => 2,
-						'link_before'    => '',
-						'link_after'     => '',
-						'walker'         => new PMO_Menu_Walker(),
 					) );
 					?>
 				</nav>
 
-				<!-- Mobile Menu Toggle -->
-				<button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation" style="display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: var(--space-2); margin-left: auto;">
-					<span>☰</span>
+				<!-- Site Search Toggle -->
+				<button id="header-search-toggle" class="header-search-toggle" aria-label="<?php esc_attr_e( 'Search this site', 'pmo-portal' ); ?>" aria-expanded="false" aria-controls="header-search-panel">
+					<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
 				</button>
+
+				<!-- Mobile Menu Toggle -->
+				<button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="<?php esc_attr_e( 'Toggle navigation', 'pmo-portal' ); ?>" aria-expanded="false" aria-controls="site-navigation" style="display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: var(--space-2);">
+					<span aria-hidden="true"><i class="fa-solid fa-bars" aria-hidden="true"></i></span>
+				</button>
+			</div>
+
+			<!-- Site Search Panel -->
+			<div id="header-search-panel" class="header-search-panel" hidden>
+				<div class="container">
+					<form role="search" class="header-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+						<label class="screen-reader-text" for="header-search-input"><?php esc_html_e( 'Search this site', 'pmo-portal' ); ?></label>
+						<input type="search" id="header-search-input" name="s" placeholder="<?php esc_attr_e( 'Search news, programmes, events…', 'pmo-portal' ); ?>" autocomplete="off" />
+						<button type="submit" class="btn btn-primary"><?php esc_html_e( 'Search', 'pmo-portal' ); ?></button>
+					</form>
+					<div id="header-search-results" class="header-search-results" aria-live="polite"></div>
+				</div>
 			</div>
 		</div>
 		<style>
@@ -105,7 +116,7 @@
 			.nav-menu .current-menu-item > a,
 			.nav-menu .active > a {
 				color: var(--color-primary);
-				border-bottom-color: var(--color-accent);
+				border-bottom-color: var(--color-accent-dark);
 				font-weight: var(--font-weight-semibold);
 			}
 
@@ -128,7 +139,8 @@
 				}
 
 				.main-navigation.active {
-					max-height: 500px;
+					max-height: calc(100vh - 70px);
+					overflow-y: auto;
 				}
 
 				.nav-menu {
@@ -145,7 +157,7 @@
 
 				.nav-menu a:hover,
 				.nav-menu .current-menu-item > a {
-					border-left-color: var(--color-accent);
+					border-left-color: var(--color-accent-dark);
 					border-bottom-color: transparent;
 				}
 
@@ -161,3 +173,43 @@
 			}
 		</style>
 	</header>
+
+	<?php if ( ! is_front_page() && ! is_home() ) : ?>
+		<nav class="pmo-breadcrumbs" aria-label="<?php esc_attr_e( 'Breadcrumb', 'pmo-portal' ); ?>">
+			<div class="container">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'pmo-portal' ); ?></a>
+				<?php
+				$pmo_crumb = '';
+				if ( is_singular() ) {
+					$pmo_post_type = get_post_type_object( get_post_type() );
+					if ( $pmo_post_type && ! empty( $pmo_post_type->has_archive ) ) {
+						$pmo_archive_link = get_post_type_archive_link( get_post_type() );
+						if ( $pmo_archive_link ) {
+							printf(
+								'<span aria-hidden="true">›</span><a href="%s">%s</a>',
+								esc_url( $pmo_archive_link ),
+								esc_html( $pmo_post_type->labels->name )
+							);
+						}
+					}
+					$pmo_crumb = get_the_title();
+				} elseif ( is_post_type_archive() ) {
+					$pmo_crumb = post_type_archive_title( '', false );
+				} elseif ( is_search() ) {
+					$pmo_crumb = __( 'Search Results', 'pmo-portal' );
+				} elseif ( is_archive() ) {
+					$pmo_crumb = get_the_archive_title();
+				} elseif ( is_404() ) {
+					$pmo_crumb = __( 'Page Not Found', 'pmo-portal' );
+				}
+
+				if ( $pmo_crumb ) {
+					printf(
+						'<span aria-hidden="true">›</span><span aria-current="page">%s</span>',
+						esc_html( wp_strip_all_tags( $pmo_crumb ) )
+					);
+				}
+				?>
+			</div>
+		</nav>
+	<?php endif; ?>

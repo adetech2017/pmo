@@ -21,7 +21,7 @@ add_action( 'admin_enqueue_scripts', 'pmo_enqueue_gallery_media_scripts' );
 function pmo_add_simple_gallery_meta_box() {
 	add_meta_box(
 		'pmo_simple_gallery',
-		'📸 Gallery Images',
+		'<i class="fa-solid fa-camera" aria-hidden="true"></i> Gallery Images',
 		'pmo_render_simple_gallery_meta_box',
 		'page',
 		'normal',

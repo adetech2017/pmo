@@ -43,7 +43,7 @@ get_header();
               echo esc_html( $excerpt );
               ?>
             </p>
-            <a href="<?php the_permalink(); ?>" style="color: var(--color-accent); font-weight: var(--font-weight-semibold); text-decoration: none;">Read More →</a>
+            <a href="<?php the_permalink(); ?>" style="color: var(--color-accent-dark); font-weight: var(--font-weight-semibold); text-decoration: none;">Read More →</a>
           </div>
         <?php } ?>
       </div>
@@ -85,7 +85,7 @@ get_header();
 <style>
   .card:hover {
     box-shadow: var(--shadow-lg);
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-dark);
     transform: translateY(-4px);
   }
 </style>

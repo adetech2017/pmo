@@ -48,7 +48,7 @@ get_header();
       <!-- Sidebar -->
       <div>
         <!-- Programme Details Card -->
-        <div style="background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-teal) 100%); color: var(--color-white); padding: var(--space-8); border-radius: var(--radius-xl); margin-bottom: var(--space-8);">
+        <div style="background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-teal) 100%); color: var(--color-white); padding: var(--space-8); border-radius: var(--radius-xl); margin-bottom: var(--space-8);">
           <h3 style="color: var(--color-white); margin-bottom: var(--space-6); font-size: 1.3rem;">Programme Details</h3>
 
           <?php
@@ -122,8 +122,8 @@ get_header();
         </div>
 
         <!-- Related Info Box -->
-        <div style="background: var(--color-gray-50); padding: var(--space-6); border-radius: var(--radius-xl); border-left: 4px solid var(--color-indigo);">
-          <h4 style="color: var(--color-primary); margin-bottom: var(--space-4);">📌 Key Information</h4>
+        <div style="background: var(--color-gray-50); padding: var(--space-6); border-radius: var(--radius-xl); border-left: 4px solid var(--color-primary-700);">
+          <h4 style="color: var(--color-primary); margin-bottom: var(--space-4);"><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Key Information</h4>
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="margin-bottom: var(--space-3); color: var(--color-gray-700);">
               <strong>Type:</strong> Government Initiative
@@ -144,7 +144,7 @@ get_header();
   <!-- Back Link -->
   <section style="padding: var(--space-8) var(--container-padding-desktop); text-align: center; border-top: 1px solid var(--color-gray-100);">
     <div class="container">
-      <a href="<?php echo esc_url( home_url( '/programmes/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-indigo); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
+      <a href="<?php echo esc_url( home_url( '/programmes/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-primary-700); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
         ← Back to All Programmes
       </a>
     </div>

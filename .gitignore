@@ -2,3 +2,6 @@
 /pre.txt
 /wp-config.php
 /.htaccess
+# Logs and uploads
+wp-content/debug.log
+wp-content/uploads/

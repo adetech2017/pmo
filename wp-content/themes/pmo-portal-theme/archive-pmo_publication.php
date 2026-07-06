@@ -51,7 +51,7 @@ get_header(); ?>
 										$doc_id = get_post_meta( get_the_ID(), '_pmo_document_id', true );
 										if ( $doc_id ) {
 											$doc_url = wp_get_attachment_url( $doc_id );
-											echo '<a href="' . esc_url( $doc_url ) . '" target="_blank" class="btn btn-secondary" style="padding: 5px 10px; font-size: 12px;">📥 Download</a>';
+											echo '<a href="' . esc_url( $doc_url ) . '" target="_blank" class="btn btn-secondary" style="padding: 5px 10px; font-size: 12px;"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</a>';
 										}
 										?>
 									</td>

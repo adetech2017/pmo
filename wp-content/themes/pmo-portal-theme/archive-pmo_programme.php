@@ -18,7 +18,7 @@ get_header();
     <div class="container" style="position: relative; z-index: 2;">
       <div style="max-width: 800px;">
         <div style="display: inline-block; padding: var(--space-1) var(--space-3); background: rgba(255, 255, 255, 0.2); border-radius: var(--radius-full); margin-bottom: var(--space-4); font-size: var(--font-size-small); font-weight: var(--font-weight-semibold);">
-          🎯 Government Programmes
+          <i class="fa-solid fa-bullseye" aria-hidden="true"></i> Government Programmes
         </div>
         <h1 style="color: var(--color-white); margin-bottom: var(--space-4); font-size: 3.5rem; line-height: 1.2; font-weight: 800;">Strategic Programmes</h1>
         <p style="color: rgba(255, 255, 255, 0.9); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed); margin-bottom: 0;">
@@ -35,7 +35,7 @@ get_header();
       <div class="container">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-6);">
           <div style="text-align: center;">
-            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-indigo); margin-bottom: var(--space-2);">
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary-700); margin-bottom: var(--space-2);">
               <?php
               $total_posts = wp_count_posts( 'pmo_programme' );
               echo esc_html( $total_posts->publish );
@@ -82,12 +82,12 @@ get_header();
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-12);">
           <div>
             <h2 style="font-size: 2rem; margin-bottom: var(--space-2);">All Programmes</h2>
-            <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--color-indigo), var(--color-teal)); border-radius: 2px;"></div>
+            <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--color-primary-700), var(--color-teal)); border-radius: 2px;"></div>
           </div>
         </div>
 
         <!-- Programmes Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-8);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr)); gap: var(--space-8);">
           <?php
           while ( have_posts() ) {
             the_post();
@@ -107,12 +107,12 @@ get_header();
               <div style="background: var(--color-white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; hover: box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); display: flex; flex-direction: column; height: 100%;">
 
                 <!-- Image -->
-                <div style="position: relative; height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-indigo), var(--color-teal));">
+                <div style="position: relative; height: 250px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-700), var(--color-teal));">
                   <?php
                   if ( has_post_thumbnail() ) {
                     the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) );
                   } else {
-                    echo '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: var(--color-white);">📊</div>';
+                    echo '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: var(--color-white);"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>';
                   }
                   ?>
 
@@ -137,7 +137,7 @@ get_header();
 
                   <!-- Budget -->
                   <?php if ( $budget ) { ?>
-                    <div style="padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg); margin-bottom: var(--space-4); border-left: 4px solid var(--color-indigo);">
+                    <div style="padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg); margin-bottom: var(--space-4); border-left: 4px solid var(--color-primary-700);">
                       <div style="font-size: var(--font-size-small); color: var(--color-gray-600);">Budget</div>
                       <div style="font-weight: var(--font-weight-bold); color: var(--color-primary); font-size: 1.1rem;">
                         <?php echo esc_html( $budget ); ?>
@@ -150,19 +150,19 @@ get_header();
                     <div style="margin-bottom: var(--space-4);">
                       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
                         <div style="font-size: var(--font-size-small); color: var(--color-gray-600); font-weight: var(--font-weight-semibold);">Completion</div>
-                        <div style="font-weight: var(--font-weight-bold); color: var(--color-indigo);">
+                        <div style="font-weight: var(--font-weight-bold); color: var(--color-primary-700);">
                           <?php echo intval( $completion ); ?>%
                         </div>
                       </div>
                       <div style="background: var(--color-gray-200); border-radius: 10px; height: 8px; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, var(--color-indigo), var(--color-teal)); height: 100%; width: <?php echo intval( $completion ); ?>%; border-radius: 10px; transition: width 0.3s ease;"></div>
+                        <div style="background: linear-gradient(90deg, var(--color-primary-700), var(--color-teal)); height: 100%; width: <?php echo intval( $completion ); ?>%; border-radius: 10px; transition: width 0.3s ease;"></div>
                       </div>
                     </div>
                   <?php } ?>
 
                   <!-- Learn More Link -->
                   <div style="margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--color-gray-100);">
-                    <span style="color: var(--color-indigo); font-weight: var(--font-weight-semibold); display: inline-flex; align-items: center; gap: var(--space-2);">
+                    <span style="color: var(--color-primary-700); font-weight: var(--font-weight-semibold); display: inline-flex; align-items: center; gap: var(--space-2);">
                       View Details <span>→</span>
                     </span>
                   </div>
@@ -192,12 +192,12 @@ get_header();
     <!-- No Programmes -->
     <section style="padding: var(--space-20) var(--container-padding-desktop); background: var(--color-gray-50);">
       <div class="container" style="text-align: center;">
-        <div style="font-size: 4rem; margin-bottom: var(--space-4);">📊</div>
+        <div style="font-size: 4rem; margin-bottom: var(--space-4);"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>
         <h2 style="color: var(--color-primary); margin-bottom: var(--space-4); font-size: 1.8rem;">No Programmes Yet</h2>
         <p style="color: var(--color-gray-600); font-size: var(--font-size-body-lg); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto;">
           Strategic programmes will be displayed here as they are created. Check back soon for updates on key initiatives and government programmes.
         </p>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-indigo); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-primary-700); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
           Back to Home
         </a>
       </div>

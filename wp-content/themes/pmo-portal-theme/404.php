@@ -28,21 +28,21 @@ get_header();
       <h2 style="text-align: center; margin-bottom: var(--space-12);">Quick Links</h2>
       <div class="grid grid-3">
         <div class="card" style="background-color: var(--color-white); border: 1px solid var(--color-gray-100); border-radius: var(--radius-lg); padding: var(--space-6); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: var(--space-4);">📰</div>
+          <div style="font-size: 2rem; margin-bottom: var(--space-4);"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></div>
           <h3 style="font-size: var(--font-size-h4); margin-bottom: var(--space-3);">Latest News</h3>
           <p style="color: var(--color-gray-600); margin-bottom: var(--space-4);">Stay updated with PMO news</p>
           <a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="btn btn-primary">Read News</a>
         </div>
 
         <div class="card" style="background-color: var(--color-white); border: 1px solid var(--color-gray-100); border-radius: var(--radius-lg); padding: var(--space-6); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: var(--space-4);">📅</div>
+          <div style="font-size: 2rem; margin-bottom: var(--space-4);"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></div>
           <h3 style="font-size: var(--font-size-h4); margin-bottom: var(--space-3);">Upcoming Events</h3>
           <p style="color: var(--color-gray-600); margin-bottom: var(--space-4);">Join our events</p>
           <a href="<?php echo esc_url( home_url( '/events' ) ); ?>" class="btn btn-primary">View Events</a>
         </div>
 
         <div class="card" style="background-color: var(--color-white); border: 1px solid var(--color-gray-100); border-radius: var(--radius-lg); padding: var(--space-6); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: var(--space-4);">👥</div>
+          <div style="font-size: 2rem; margin-bottom: var(--space-4);"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
           <h3 style="font-size: var(--font-size-h4); margin-bottom: var(--space-3);">Our Team</h3>
           <p style="color: var(--color-gray-600); margin-bottom: var(--space-4);">Meet the leadership</p>
           <a href="<?php echo esc_url( home_url( '/leadership' ) ); ?>" class="btn btn-primary">See Team</a>
@@ -57,7 +57,7 @@ get_header();
 <style>
   .card:hover {
     box-shadow: var(--shadow-lg);
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-dark);
     transform: translateY(-4px);
   }
 </style>

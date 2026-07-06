@@ -75,52 +75,118 @@ get_header();
     </div>
   </section>
 
-  <!-- T.H.E.M.E.S+ Agenda Section -->
+  <!-- ========== THEMES+ AGENDA ========== -->
   <section class="section" style="background: var(--color-gray-50);">
     <div class="container">
-      <div class="themes-header">
-        <h2>T.H.E.M.E.S+ Agenda</h2>
-        <p>The strategic framework driving our initiatives</p>
+      <div class="section-header">
+        <h2>The THEMES+ Agenda</h2>
+        <p>The strategic roadmap for the "Greater Lagos" vision</p>
       </div>
 
-      <div class="themes-grid">
-        <div class="themes-card themes-t">
+      <div style="max-width: 800px; margin: 0 auto var(--space-12) auto; text-align: center;">
+        <p style="font-size: var(--font-size-body-lg); color: var(--color-gray-700); line-height: var(--line-height-relaxed);">
+          The Lagos State Government operates under the THEMES+ Agenda, which is the strategic roadmap for the "Greater Lagos" vision. This agenda is designed to ensure sustainable development and improve the quality of life for all residents.
+        </p>
+      </div>
+
+      <div class="themes-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: var(--space-6);">
+        <div class="themes-card">
           <div class="themes-letter">T</div>
-          <h4>Transportation</h4>
-          <p>Improving efficiency in transport-related parastatals</p>
+          <h3>Traffic Management and Transportation</h3>
+          <p>Enhancing mobility through the expansion of the rail network (Blue and Red Lines), water transportation, and road infrastructure.</p>
         </div>
 
-        <div class="themes-card themes-h">
+        <div class="themes-card">
           <div class="themes-letter">H</div>
-          <h4>Health</h4>
-          <p>Enhancing healthcare service delivery</p>
+          <h3>Health and Environment</h3>
+          <p>Improving healthcare delivery through the ILERA EKO health insurance scheme and maintaining a cleaner environment through the Lagos State Waste Management Authority (LAWMA).</p>
         </div>
 
-        <div class="themes-card themes-e1">
+        <div class="themes-card">
           <div class="themes-letter">E</div>
-          <h4>Education</h4>
-          <p>Supporting quality education provision</p>
+          <h3>Education and Technology</h3>
+          <p>Investing in digital literacy, STEM education, and fostering innovation through the Ministry of Innovation, Science and Technology (MIST).</p>
         </div>
 
-        <div class="themes-card themes-m">
+        <div class="themes-card">
           <div class="themes-letter">M</div>
-          <h4>Making Lagos Safe</h4>
-          <p>Security and safety initiatives</p>
+          <h3>Making Lagos a 21st Century Economy</h3>
+          <p>Focusing on ease of doing business, tax administration via LIRS, and startup support through LASRIC and LSETF.</p>
         </div>
 
-        <div class="themes-card themes-e2">
+        <div class="themes-card">
           <div class="themes-letter">E</div>
-          <h4>Environment</h4>
-          <p>Environmental sustainability programs</p>
+          <h3>Entertainment and Tourism</h3>
+          <p>Promoting the creative industry and cultural heritage as key economic drivers.</p>
         </div>
 
-        <div class="themes-card themes-s">
+        <div class="themes-card">
           <div class="themes-letter">S</div>
-          <h4>Social Services</h4>
-          <p>Strengthening social welfare delivery</p>
+          <h3>Security and Governance</h3>
+          <p>Ensuring the safety of lives and property while maintaining transparent and efficient public service delivery.</p>
+        </div>
+
+        <div class="themes-card themes-plus">
+          <div class="themes-letter">+</div>
+          <h3>The Plus</h3>
+          <p>Represents the cross-cutting themes of Social Inclusion, Gender Equality, and Youth Empowerment, ensuring no resident is left behind in the development process.</p>
         </div>
       </div>
     </div>
+
+    <style>
+      .themes-card {
+        padding: var(--space-8);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-100);
+        border-left: 5px solid var(--color-primary);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-base);
+      }
+
+      .themes-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-6px);
+      }
+
+      .themes-card.themes-plus {
+        border-left-color: var(--color-accent-dark);
+      }
+
+      .themes-letter {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-primary);
+        color: var(--color-white);
+        font-size: 1.75rem;
+        font-weight: 800;
+        border-radius: var(--radius-md);
+        margin-bottom: var(--space-4);
+      }
+
+      .themes-plus .themes-letter {
+        background: var(--color-accent);
+      }
+
+      .themes-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-primary-700);
+        margin-bottom: var(--space-3);
+        line-height: 1.4;
+      }
+
+      .themes-card p {
+        color: var(--color-gray-600);
+        font-size: var(--font-size-small);
+        line-height: var(--line-height-relaxed);
+        margin: 0;
+      }
+    </style>
   </section>
 
   <!-- Core Values Grid -->

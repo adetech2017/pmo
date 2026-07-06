@@ -1,14 +1,18 @@
 /**
  * PMO Carousel - Auto-play with fade animation
+ *
+ * Respects prefers-reduced-motion (no auto-play), keeps hidden slides
+ * unfocusable, and scopes keyboard navigation to the carousel.
  */
 document.addEventListener('DOMContentLoaded', function() {
 	const carousel = document.querySelector('.hero-carousel');
 	if (!carousel) return;
 
-	const slides = document.querySelectorAll('.carousel-slide');
-	const dots = document.querySelectorAll('.carousel-dot');
-	const prevBtn = document.querySelector('.carousel-prev');
-	const nextBtn = document.querySelector('.carousel-next');
+	const slides = carousel.querySelectorAll('.carousel-slide');
+	const dots = carousel.querySelectorAll('.carousel-dot');
+	const prevBtn = carousel.querySelector('.carousel-prev');
+	const nextBtn = carousel.querySelector('.carousel-next');
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	if (slides.length === 0) return;
 
@@ -22,22 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function showSlide(index) {
-		// Hide all slides
-		slides.forEach(slide => {
-			slide.style.opacity = '0';
-		});
-
-		// Remove active class from all dots
-		dots.forEach(dot => {
-			dot.style.background = 'rgba(255, 255, 255, 0.5)';
-		});
-
-		// Show current slide
 		currentSlide = (index + slides.length) % slides.length;
-		slides[currentSlide].style.opacity = '1';
-		if (dots[currentSlide]) {
-			dots[currentSlide].style.background = 'rgba(255, 255, 255, 0.9)';
-		}
+
+		slides.forEach((slide, i) => {
+			const isActive = i === currentSlide;
+			slide.style.opacity = isActive ? '1' : '0';
+			// Keep links in hidden slides out of the tab order / accessibility tree
+			slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+			slide.querySelectorAll('a, button').forEach(el => {
+				el.tabIndex = isActive ? 0 : -1;
+			});
+		});
+
+		dots.forEach((dot, i) => {
+			dot.style.background = i === currentSlide ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.5)';
+			dot.setAttribute('aria-current', i === currentSlide ? 'true' : 'false');
+		});
 	}
 
 	function nextSlide() {
@@ -51,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function autoPlay() {
+		if (prefersReducedMotion || slides.length < 2) return;
 		autoPlayInterval = setInterval(() => {
 			showSlide(currentSlide + 1);
-		}, 6000); // 6 seconds
+		}, 6000);
 	}
 
 	function resetAutoPlay() {
@@ -81,8 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		autoPlay();
 	});
 
-	// Keyboard navigation
-	document.addEventListener('keydown', (e) => {
+	// Keyboard navigation — only when focus is inside the carousel, so
+	// arrow keys elsewhere on the page are left alone
+	carousel.addEventListener('keydown', (e) => {
 		if (e.key === 'ArrowLeft') prevSlide();
 		if (e.key === 'ArrowRight') nextSlide();
 	});

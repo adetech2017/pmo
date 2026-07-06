@@ -31,7 +31,7 @@ get_header();
       <?php
       $exec_args = array(
         'post_type'      => 'pmo_directorate',
-        'posts_per_page' => -1,
+        'posts_per_page' => 100,
         'orderby'        => 'meta_value_num',
         'meta_key'       => '_display_order',
         'order'          => 'ASC',
@@ -119,7 +119,7 @@ get_header();
       <?php
       $dept_args = array(
         'post_type'      => 'pmo_directorate',
-        'posts_per_page' => -1,
+        'posts_per_page' => 100,
         'orderby'        => 'meta_value_num',
         'meta_key'       => '_display_order',
         'order'          => 'ASC',

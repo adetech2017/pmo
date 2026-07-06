@@ -23,7 +23,7 @@ get_header();
         <?php
         $position = get_post_meta( get_the_ID(), '_leadership_position', true );
         if ( $position ) {
-          echo '<div style="font-size: var(--font-size-body-lg); color: var(--color-accent); font-weight: var(--font-weight-semibold);">' . esc_html( $position ) . '</div>';
+          echo '<div style="font-size: var(--font-size-body-lg); color: var(--color-accent-dark); font-weight: var(--font-weight-semibold);">' . esc_html( $position ) . '</div>';
         }
         ?>
       </header>
@@ -47,7 +47,7 @@ get_header();
         <?php } ?>
         <?php if ( $email ) { ?>
           <div style="margin-bottom: var(--space-3);">
-            <strong>Email:</strong> <a href="mailto:<?php echo esc_attr( $email ); ?>" style="color: var(--color-accent);"><?php echo esc_html( $email ); ?></a>
+            <strong>Email:</strong> <a href="mailto:<?php echo esc_attr( $email ); ?>" style="color: var(--color-accent-dark);"><?php echo esc_html( $email ); ?></a>
           </div>
         <?php } ?>
         <?php if ( $office ) { ?>

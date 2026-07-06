@@ -48,7 +48,7 @@ Tags: government, premium, custom, responsive, accessible, wcag
   --color-success: #047857;
   --color-warning: #d97706;
   --color-danger: #dc2626;
-  --color-info: #0369a1;
+  --color-info: #2d7658;
   --color-neutral: #6b7280;
 
   /* Neutral Palette - Premium Grays */
@@ -1435,3 +1435,187 @@ img[loading="lazy"] {
 .items-center { align-items: center; }
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
+
+/* ============================================================================
+   ACCESSIBILITY & INTERACTION HELPERS
+   ========================================================================== */
+
+/* Upcoming-events row hover (replaces inline onmouseover handlers) */
+.pmo-event-row:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateX(8px);
+}
+
+/* Hidden carousel slides must not be clickable or focusable */
+.carousel-slide[aria-hidden="true"] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.carousel-slide {
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Respect users who prefer reduced motion: disable entrance animations,
+   transforms and smooth transitions site-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .pmo-event-row:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   CONTRAST & LEGIBILITY
+   ========================================================================== */
+
+/* Dark scrim so carousel headlines stay readable over any photo */
+.carousel-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 20, 13, 0.25) 0%, rgba(0, 20, 13, 0.6) 100%);
+}
+
+.carousel-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Branded, visible keyboard focus for every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   HEADER SEARCH & BREADCRUMBS
+   ========================================================================== */
+
+.header-search-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--color-gray-700);
+  padding: var(--space-2) var(--space-3);
+  margin-left: var(--space-4);
+  transition: color var(--transition-fast);
+}
+
+.header-search-toggle:hover,
+.header-search-toggle[aria-expanded="true"] {
+  color: var(--color-primary);
+}
+
+.header-search-panel {
+  border-top: 1px solid var(--color-gray-100);
+  background: var(--color-white);
+  padding: var(--space-4) 0;
+  box-shadow: var(--shadow-md);
+}
+
+.header-search-form {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.header-search-form input[type="search"] {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body);
+  font-family: inherit;
+}
+
+.header-search-form input[type="search"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 61, 42, 0.12);
+}
+
+.header-search-results ul {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+}
+
+.header-search-results li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.header-search-results a {
+  color: var(--color-primary-700);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.header-search-results a:hover {
+  text-decoration: underline;
+}
+
+.header-search-type {
+  font-size: var(--font-size-caption);
+  color: var(--color-gray-500);
+  background: var(--color-gray-50);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.header-search-empty {
+  margin: var(--space-4) 0 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-small);
+}
+
+.pmo-breadcrumbs {
+  background: var(--color-gray-50);
+  border-bottom: 1px solid var(--color-gray-100);
+  padding: var(--space-2) 0;
+  font-size: var(--font-size-small);
+}
+
+.pmo-breadcrumbs .container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.pmo-breadcrumbs a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.pmo-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.pmo-breadcrumbs span[aria-current] {
+  color: var(--color-gray-600);
+}
+
+.pmo-breadcrumbs span[aria-hidden] {
+  color: var(--color-gray-400);
+}

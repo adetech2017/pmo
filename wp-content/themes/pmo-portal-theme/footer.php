@@ -16,7 +16,7 @@
 				<div class="footer-section">
 					<h4><?php esc_html_e( 'About PMO', 'pmo-portal' ); ?></h4>
 					<p style="color: var(--color-gray-300); font-size: var(--type-body-sm); margin-bottom: var(--space-4);">
-						<?php esc_html_e( 'The Lagos State Project Monitoring Office ensures transparent, accountable infrastructure delivery across all 20 local government areas.', 'pmo-portal' ); ?>
+						<?php esc_html_e( 'The Lagos State Parastatals Monitoring Office ensures transparent, accountable and efficient governance across all State Owned Parastatals.', 'pmo-portal' ); ?>
 					</p>
 				</div>
 
@@ -25,9 +25,9 @@
 					<h4><?php esc_html_e( 'Quick Links', 'pmo-portal' ); ?></h4>
 					<ul class="footer-links">
 						<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'pmo-portal' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/programmes/' ) ); ?>"><?php esc_html_e( 'Programmes', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/programmes/' ) ); ?>"><?php esc_html_e( 'Our Mandate', 'pmo-portal' ); ?></a></li>
 						<li><a href="<?php echo esc_url( home_url( '/news/' ) ); ?>"><?php esc_html_e( 'News', 'pmo-portal' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>"><?php esc_html_e( 'Contact', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'pmo-portal' ); ?></a></li>
 					</ul>
 				</div>
 
@@ -35,10 +35,10 @@
 				<div class="footer-section">
 					<h4><?php esc_html_e( 'Resources', 'pmo-portal' ); ?></h4>
 					<ul class="footer-links">
-						<li><a href="#"><?php esc_html_e( 'Documentation', 'pmo-portal' ); ?></a></li>
-						<li><a href="#"><?php esc_html_e( 'FAQs', 'pmo-portal' ); ?></a></li>
-						<li><a href="#"><?php esc_html_e( 'Accessibility', 'pmo-portal' ); ?></a></li>
-						<li><a href="#"><?php esc_html_e( 'Privacy Policy', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/publications/' ) ); ?>"><?php esc_html_e( 'Publications', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><?php esc_html_e( 'Projects', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/events/' ) ); ?>"><?php esc_html_e( 'Events', 'pmo-portal' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>"><?php esc_html_e( 'Gallery', 'pmo-portal' ); ?></a></li>
 					</ul>
 				</div>
 
@@ -46,9 +46,15 @@
 				<div class="footer-section">
 					<h4><?php esc_html_e( 'Contact', 'pmo-portal' ); ?></h4>
 					<ul class="footer-links" style="font-style: normal;">
-						<li>📞 <a href="tel:+2347001234567"><?php esc_html_e( '+234 (0) 700 LAGOS PMO', 'pmo-portal' ); ?></a></li>
-						<li>📧 <a href="mailto:info@pmo.lagosstate.gov.ng"><?php esc_html_e( 'info@pmo.lagosstate.gov.ng', 'pmo-portal' ); ?></a></li>
-						<li>🌐 <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'pmo.lagosstate.gov.ng', 'pmo-portal' ); ?></a></li>
+						<?php $pmo_phone = get_theme_mod( 'pmo_contact_phone', '' ); ?>
+						<?php if ( $pmo_phone ) { ?>
+							<li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $pmo_phone ) ); ?>"><?php echo esc_html( $pmo_phone ); ?></a></li>
+						<?php } ?>
+						<?php $pmo_email = get_theme_mod( 'pmo_contact_email', 'info@pmo.lagosstate.gov.ng' ); ?>
+						<?php if ( $pmo_email ) { ?>
+							<li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo esc_attr( $pmo_email ); ?>"><?php echo esc_html( $pmo_email ); ?></a></li>
+						<?php } ?>
+						<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <?php esc_html_e( 'The Secretariat, Alausa, Ikeja, Lagos', 'pmo-portal' ); ?></li>
 					</ul>
 				</div>
 			</div>

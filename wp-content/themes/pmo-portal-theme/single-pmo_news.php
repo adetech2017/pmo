@@ -12,7 +12,7 @@ get_header();
   <div class="container" style="padding-top: var(--space-12); padding-bottom: var(--space-12);">
     <div style="display: grid; grid-template-columns: 1fr 300px; gap: var(--space-8);">
 
-      <article id="post-<?php the_ID(); ?>" <?php post_class( 'card' ); ?> style="background-color: var(--color-white); border: 1px solid var(--color-gray-100); border-top: 4px solid var(--color-indigo); border-radius: var(--radius-lg); padding: var(--space-8); background: linear-gradient(180deg, rgba(67, 56, 202, 0.02) 0%, transparent 100%);">
+      <article id="post-<?php the_ID(); ?>" <?php post_class( 'card' ); ?> style="background-color: var(--color-white); border: 1px solid var(--color-gray-100); border-top: 4px solid var(--color-primary-700); border-radius: var(--radius-lg); padding: var(--space-8); background: linear-gradient(180deg, rgba(0, 61, 42, 0.02) 0%, transparent 100%);">
 
         <?php if ( has_post_thumbnail() ) { ?>
           <div style="margin-bottom: var(--space-8); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-gray-200);">
@@ -21,11 +21,15 @@ get_header();
         <?php } ?>
 
         <header style="margin-bottom: var(--space-8);">
-          <h1 style="font-size: var(--font-size-h1); color: var(--color-indigo); margin-bottom: var(--space-4);"><?php the_title(); ?></h1>
+          <h1 style="font-size: var(--font-size-h1); color: var(--color-primary-700); margin-bottom: var(--space-4);"><?php the_title(); ?></h1>
           <div style="display: flex; gap: var(--space-4); color: var(--color-gray-600); font-size: var(--font-size-small);">
             <span>By <?php the_author(); ?></span>
             <span>•</span>
             <span><?php echo esc_html( get_the_date( 'F j, Y' ) ); ?></span>
+            <?php if ( get_the_modified_date( 'Ymd' ) !== get_the_date( 'Ymd' ) ) { ?>
+              <span>•</span>
+              <span><?php printf( esc_html__( 'Updated %s', 'pmo-portal' ), esc_html( get_the_modified_date( 'F j, Y' ) ) ); ?></span>
+            <?php } ?>
           </div>
         </header>
 

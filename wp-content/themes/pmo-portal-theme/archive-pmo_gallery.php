@@ -18,7 +18,7 @@ get_header();
     <div class="container" style="position: relative; z-index: 2;">
       <div style="max-width: 800px;">
         <div style="display: inline-block; padding: var(--space-1) var(--space-3); background: rgba(255, 255, 255, 0.2); border-radius: var(--radius-full); margin-bottom: var(--space-4); font-size: var(--font-size-small); font-weight: var(--font-weight-semibold);">
-          🖼️ Visual Stories
+          <i class="fa-solid fa-images" aria-hidden="true"></i> Visual Stories
         </div>
         <h1 style="color: var(--color-white); margin-bottom: var(--space-4); font-size: 3.5rem; line-height: 1.2; font-weight: 800;">Gallery</h1>
         <p style="color: rgba(255, 255, 255, 0.9); font-size: var(--font-size-body-lg); line-height: var(--line-height-relaxed);">
@@ -36,11 +36,11 @@ get_header();
         <!-- Header -->
         <div style="margin-bottom: var(--space-12);">
           <h2 style="font-size: 2rem; margin-bottom: var(--space-2);">Photo Collections</h2>
-          <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--color-indigo), var(--color-teal)); border-radius: 2px;"></div>
+          <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--color-primary-700), var(--color-teal)); border-radius: 2px;"></div>
         </div>
 
         <!-- Galleries Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-8);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr)); gap: var(--space-8);">
           <?php
           while ( have_posts() ) {
             the_post();
@@ -53,20 +53,20 @@ get_header();
               <div style="background: var(--color-white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%;">
 
                 <!-- Gallery Thumbnail -->
-                <div style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, var(--color-indigo), var(--color-teal));">
+                <div style="position: relative; height: 280px; overflow: hidden; background: linear-gradient(135deg, var(--color-primary-700), var(--color-teal));">
                   <?php
                   if ( $first_image_id ) {
                     echo wp_get_attachment_image( $first_image_id, 'large', false, array( 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) );
                   } else if ( has_post_thumbnail() ) {
                     the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) );
                   } else {
-                    echo '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--color-white); font-size: 3rem;">🖼️</div>';
+                    echo '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--color-white); font-size: 3rem;"><i class="fa-solid fa-images" aria-hidden="true"></i></div>';
                   }
                   ?>
 
                   <!-- Image Count Badge -->
-                  <div style="position: absolute; top: var(--space-4); right: var(--space-4); background: var(--color-indigo); color: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); font-weight: var(--font-weight-semibold); font-size: var(--font-size-small);">
-                    📷 <?php echo intval( $image_count ); ?> Photos
+                  <div style="position: absolute; top: var(--space-4); right: var(--space-4); background: var(--color-primary-700); color: var(--color-white); padding: var(--space-2) var(--space-4); border-radius: var(--radius-lg); font-weight: var(--font-weight-semibold); font-size: var(--font-size-small);">
+                    <i class="fa-solid fa-camera" aria-hidden="true"></i> <?php echo intval( $image_count ); ?> Photos
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ get_header();
 
                   <!-- View Gallery Button -->
                   <div style="margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--color-gray-100);">
-                    <span style="color: var(--color-indigo); font-weight: var(--font-weight-semibold); display: inline-flex; align-items: center; gap: var(--space-2);">
+                    <span style="color: var(--color-primary-700); font-weight: var(--font-weight-semibold); display: inline-flex; align-items: center; gap: var(--space-2);">
                       View Gallery <span>→</span>
                     </span>
                   </div>
@@ -110,12 +110,12 @@ get_header();
     <!-- No Galleries -->
     <section style="padding: var(--space-20) var(--container-padding-desktop); background: var(--color-gray-50);">
       <div class="container" style="text-align: center;">
-        <div style="font-size: 4rem; margin-bottom: var(--space-4);">🖼️</div>
+        <div style="font-size: 4rem; margin-bottom: var(--space-4);"><i class="fa-solid fa-images" aria-hidden="true"></i></div>
         <h2 style="color: var(--color-primary); margin-bottom: var(--space-4); font-size: 1.8rem;">No Galleries Yet</h2>
         <p style="color: var(--color-gray-600); font-size: var(--font-size-body-lg); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto;">
           Photo galleries will be displayed here as they are added. Check back soon for visual content from our events and activities.
         </p>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-indigo); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-primary-700); color: var(--color-white); border-radius: var(--radius-lg); text-decoration: none; font-weight: var(--font-weight-semibold);">
           Back to Home
         </a>
       </div>
