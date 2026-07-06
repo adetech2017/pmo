@@ -88,7 +88,7 @@ class PMO_Post_Types {
 			'has_archive'        => true,
 			'rewrite'            => array( 'slug' => 'events' ),
 			'capability_type'    => 'post',
-			'supports'           => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+			'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
 			'menu_icon'          => 'dashicons-calendar-alt',
 		) );
 	}

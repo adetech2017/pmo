@@ -34,6 +34,7 @@ add_action( 'init', function() {
 	try {
 		// Load dependencies first
 		require_once PMO_CORE_PATH . 'includes/class-pmo-post-types.php';
+		require_once PMO_CORE_PATH . 'includes/class-pmo-content-types.php';
 		require_once PMO_CORE_PATH . 'includes/class-pmo-taxonomies.php';
 		require_once PMO_CORE_PATH . 'includes/class-pmo-user-roles.php';
 		require_once PMO_CORE_PATH . 'includes/class-pmo-project-module.php';

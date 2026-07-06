@@ -14,13 +14,13 @@ class PMO_Core {
 		$this->register_hooks();
 		$this->register_post_types();
 		$this->register_taxonomies();
+		PMO_Content_Types::register_post_types();
 	}
 
 	/**
 	 * Register WordPress hooks
 	 */
 	private function register_hooks() {
-		add_action( 'init', array( $this, 'on_init' ), 5 );
 		add_action( 'init', array( $this, 'initialize_modules' ), 15 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
@@ -42,20 +42,9 @@ class PMO_Core {
 			PMO_Widgets::init();
 			PMO_Contact_Form::init();
 			PMO_Search::init();
+			PMO_Content_Types::init_hooks();
 		} catch ( Exception $e ) {
 			error_log( 'PMO Modules Error: ' . $e->getMessage() );
-		}
-	}
-
-	/**
-	 * On init action
-	 */
-	public function on_init() {
-		try {
-			$this->register_post_types();
-			$this->register_taxonomies();
-		} catch ( Exception $e ) {
-			error_log( 'PMO Init Error: ' . $e->getMessage() );
 		}
 	}
 

@@ -121,9 +121,15 @@ class PMO_Contact_Form {
 				<input type="hidden" name="action" value="pmo_submit_contact_form" />
 				<input type="hidden" name="nonce" value="<?php echo esc_attr( wp_create_nonce( 'pmo_contact_form_nonce' ) ); ?>" />
 
+				<!-- Honeypot: hidden from humans, bots tend to fill it -->
+				<div style="position: absolute; left: -9999px;" aria-hidden="true">
+					<label for="pmo_contact_website">Website</label>
+					<input type="text" id="pmo_contact_website" name="website" tabindex="-1" autocomplete="off" />
+				</div>
+
 				<button
 					type="submit"
-					style="background: #003d7a; color: white; padding: 12px 30px; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;"
+					style="background: var(--color-primary, #003d2a); color: white; padding: 12px 30px; border: none; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;"
 				>
 					<?php esc_html_e( 'Send Message', 'pmo-core' ); ?>
 				</button>
@@ -142,6 +148,22 @@ class PMO_Contact_Form {
 	 */
 	public static function handle_form_submission() {
 		check_ajax_referer( 'pmo_contact_form_nonce', 'nonce' );
+
+		// Honeypot: a real visitor never fills this field. Pretend success
+		// so bots don't learn they were caught.
+		if ( ! empty( $_POST['website'] ) ) {
+			wp_send_json_success( array(
+				'message' => __( 'Thank you! Your message has been sent successfully. We will get back to you soon.', 'pmo-core' ),
+			) );
+		}
+
+		// Rate limit: max 5 submissions per IP per hour
+		$ip            = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+		$rate_key      = 'pmo_cf_rate_' . md5( $ip );
+		$submissions   = (int) get_transient( $rate_key );
+		if ( $submissions >= 5 ) {
+			wp_send_json_error( array( 'message' => __( 'Too many messages sent. Please try again later.', 'pmo-core' ) ) );
+		}
 
 		// Validate input
 		if ( empty( $_POST['name'] ) || empty( $_POST['email'] ) || empty( $_POST['message'] ) ) {
@@ -193,6 +215,8 @@ class PMO_Contact_Form {
 
 		$mail_sent = wp_mail( $admin_email, $subject, $email_body, $headers );
 
+		set_transient( $rate_key, $submissions + 1, HOUR_IN_SECONDS );
+
 		if ( $mail_sent ) {
 			// Send confirmation email to user
 			$user_subject = sprintf(
@@ -209,7 +233,11 @@ class PMO_Contact_Form {
 				$blog_name
 			);
 
-			wp_mail( $email, $user_subject, $user_body, $headers );
+			// Confirmation goes to the visitor; replies should come back to the office
+			$user_headers   = array( 'Content-Type: text/plain; charset=UTF-8' );
+			$user_headers[] = 'From: ' . $blog_name . ' <' . $admin_email . '>';
+
+			wp_mail( $email, $user_subject, $user_body, $user_headers );
 
 			wp_send_json_success( array(
 				'message' => __( 'Thank you! Your message has been sent successfully. We will get back to you soon.', 'pmo-core' ),
