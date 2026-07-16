@@ -202,7 +202,6 @@ get_header();
           <div class="card-ornament card-ornament-top-left"></div>
           <div class="card-ornament card-ornament-bottom-right"></div>
 
-          <div class="value-badge">Value 01</div>
           <div class="core-value-icon">
             <i class="fas fa-eye"></i>
           </div>
@@ -214,7 +213,6 @@ get_header();
           <div class="card-ornament card-ornament-top-right"></div>
           <div class="card-ornament card-ornament-bottom-left"></div>
 
-          <div class="value-badge">Value 02</div>
           <div class="core-value-icon">
             <i class="fas fa-star"></i>
           </div>
@@ -226,7 +224,6 @@ get_header();
           <div class="card-ornament card-ornament-top-left"></div>
           <div class="card-ornament card-ornament-bottom-right"></div>
 
-          <div class="value-badge">Value 03</div>
           <div class="core-value-icon">
             <i class="fas fa-handshake"></i>
           </div>
